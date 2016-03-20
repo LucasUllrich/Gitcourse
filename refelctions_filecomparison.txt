@@ -2,3 +2,4 @@ diff -u File1.xyz File2.xyz
 
 Compares two Files to each other and shows the changes.
 
+working directory -(git add)> staging area -(git commit)> repository
