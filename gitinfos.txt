@@ -1,0 +1,18 @@
+git log --stat
+	Detailed info to different commits
+
+git checkout SHA
+	To check out repo at the time of the commit.
+
+git checkout -b branch_name
+	Stores current checkout state (time in history of commits selected by SHA) to a new branch
+
+git diff -u file1 file2		|| git diff -u SHA1 SHA2
+	Shows changes between two files or commits, -u is for unified and obligatory
+
+Errors:
+Should not be doing an octopus
+	Octopus is a strategy Git uses to combine many different versions of code together. This message can appear if you try to use this strategy in an inappropriate situation.
+
+You are in 'detached HEAD' state
+	HEAD is what Git calls the commit you are currently on. You can “detach” the HEAD by switching to a previous commit, which we’ll see in the next video. Despite what it sounds like, it’s actually not a bad thing to detach the HEAD. Git just warns you so that you’ll realize you’re doing it.
