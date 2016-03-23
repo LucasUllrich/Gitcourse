@@ -30,6 +30,16 @@ git diff --staged
 git diff -u file1 file2		|| git diff -u SHA1 SHA2
 	Shows changes between two files or commits, -u is for unified and obligatory
 
+git fetch branch_name
+	Updates the local directory with a new branch if multiple changes were made.
+	e.g. commit1 followed by commit2 locally, commit3 is made right after commit1 on the remote:
+		the local directory would look like this: (commits viewed as branches)
+							commit3
+				commit1					result followed by merge: commit2&3
+							commit2
+	git fetch followed by git merge is equivalent to git pull
+	e.g git fetch origin; git merge master origin/master == git pull origin master
+
 git log -n<Number>
 	shows only the specified number of commits
 
@@ -40,13 +50,19 @@ git log --graph --oneline [branch1] [branchn]
 	shows commit-history in a oneline-output of the given branches
 
 git merge branch1 [branch2]
-	Merges currently checked out branch with the stated branches (e.q. 3 possible), if one of them is the checked out one they will both be merged
+	Merges currently checked out branch with the stated branches (e.g. 3 possible), if one of them is the checked out one they will both be merged
 	The new commit points to the previously checked out branch
 	The order in which branch1 and branch2 are typed in does not matter since the new commit points to the checked out branch
 
 git merge --abort
 	Aborts the current merging process and restores the files to the previous state.
 
+git pull remote_name branch_name (e.g.: git pull origin master)
+	Pulls the current version of the specified remote to the specified branch
+
+git push remote_name branch_name (e.g.: git push origin master)
+	Pushes the current version of the specified branch to the specified remote
+	
 git reset --hard
 	Resets changes in staging area and working directory -> they are equal to the repository now
 	!!!!!BEFORE make sure which changes will be deleted by running git diff and git diff --staged
@@ -55,7 +71,10 @@ git remote
 	Outputs information about the available remotes
 
 git remote add origin URL
-	Adds a URL as origin remote
+	Adds a URL as the origin remote
+
+git remote add remote_name URL
+	Adds a URL as a specified remote
 
 git remote -v
 	"verbose" (= langatmig), outputs more specific information about the remote such as push and fetch URL
@@ -71,9 +90,21 @@ You are in 'detached HEAD' state
 
 Mergeconflict:
 <<<<<HEAD
-	Current code on branch or to be commited
-|||||| merged common ancestors
+	Current code on branch (if merging 2 branches) or to be commited (if syncing with the remote)
+|||||| merged common ancestors		("git config --global merge.conflictstyle diff3" needs to be set up to get this output)
 	Original version of both modified file
 ======
-	Code on master branch
+	Code on master (or any other specified branch, could also be origin/master after fetching and merging the remote) branch
 >>>>>master
+
+Additional information:
+Forking:
+	Forking "clones" a repository localy on GitHub to the used account. Now full permission is available (not to the original repository but to the copy on the account)
+
+origin/master: (could be seen as branch)
+	specifies the master position of the remote called origin, used on the system it will be the master position of the remote at the time of the last pull or fetch (sync in generall)
+	visual explanation: https://youtu.be/lA_drnU1TMI
+
+fast forward merging:
+	possible if the first commit is an ancestor (= Vorfahre) of the second commit
+	pro: no new commit is created
