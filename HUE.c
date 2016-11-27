@@ -2,10 +2,24 @@
 
 int A[5];
 int B[5];
-int minA, minB;
+int minA;
 int maxA;
 int minB;
 float midA;
+int sortflag = 0;
+
+void rearagne(int c) {
+	int hold = A[1 + c];
+	printf("\n\nDebuginfo3:\n");
+	printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
+	A[1 + c] = A[c];
+	printf("\n\nDebuginfo4:\n");
+	printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
+	A[c] = hold;
+	printf("\n\nDebuginfo5:\n");
+	printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
+	sortflag = 1;
+}
 
 int main() {
 	printf ("1 Wert: ");
@@ -36,32 +50,30 @@ int main() {
 	}
 	
 	//****Evaluation of median
-	B[0] = minA;
-	minB = 
-	for(int c = 1; c < 5; c++) {
-		for (int c = 1; c < 5; c++) {
-			if ( minB > A[c]){ 
-				minB = A[c];
+	do {
+		sortflag = 0;
+		for(int c = 0; c < ((sizeof(A) / sizeof(A[0])) - 1); c++) {
+			printf("\n\nDebuginfo1:\n");
+			printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
+			while(A[1 + c] < A[c]) {
+				printf("\n\nDebuginfo2:\n");
+				printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
+				rearagne(c);
 			}
 		}
-		B[c] = A[];
-	}
+	} while (sortflag == 1);
 	
-	printf("B: %d, %d , %d, %d, %d",
-	B[0],
-	B[1],
-	B[2],
-	B[3],
-	B[4]);
-	int x = (sizeof(B) / sizeof(B[0])) / 2;
-	int size = sizeof(B) / sizeof(B[0]);
-	printf("Size: %d\n", size);
-	if (sizeof(B) %2) {
-		midA = B[x];
+	
+	int x = (sizeof(A) / sizeof(A[0])) / 2;
+	if ((sizeof(A) / sizeof(A[0])) % 2) {
+		midA = A[x];
 	}
 	
 	printf ("Minimum: %d\n", minA);
 	printf ("Maximum: %d\n", maxA);
-	printf ("Median: %d", B[x]);
+	printf ("Median: %d\n", A[x]);
+	
+	printf("\n\nDebuginfoE:\n");
+	printf("A: %d, %d, %d, %d, %d", A[0], A[1], A[2], A[3], A[4]);
 	return 0;
 }

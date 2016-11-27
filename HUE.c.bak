@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int A[5];
+int B[5];
+int minA;
+int maxA;
+int minB;
+float midA;
+int sortflag = 0;
+
+void rearagne(int c) {
+	int hold = B[c + 1];
+	B[c + 1] = B[c];
+	B[c] = hold;
+	sortflag = 1;
+}
+
+int main() {
+	printf ("1 Wert: ");
+	scanf ("%d", &A[0]);
+	printf ("2 Wert: ");
+	scanf ("%d", &A[1]);
+	printf ("3 Wert: ");
+	scanf ("%d", &A[2]);
+	printf ("4 Wert: ");
+	scanf ("%d", &A[3]);
+	printf ("5 Wert: ");
+	scanf ("%d", &A[4]);
+	
+	//****Evaluation of minimum
+	minA = A[0]; 
+	for (int c=1; c<5; c++) {
+		if ( minA > A[c]){ 
+			minA = A[c];
+		}		
+	}
+	
+	//****Evaluation of maximum
+	maxA = A[0];
+	for (int c=1; c<5; c++) {
+		if ( maxA < A[c] ){
+			maxA = A[c];
+		}
+	}
+	
+	//****Evaluation of median
+	do {
+		sortflag = 0;
+		for(int c = 0; c < (sizeof(B) / sizeof(B[0])); c++) {
+			while(A[c +1] < A[c]) {
+				rearagne(c);
+			}
+		}
+	} while (sortflag == 1);
+	
+	
+	int x = (sizeof(B) / sizeof(B[0])) / 2;
+	if ((sizeof(B) / sizeof(B[0])) % 2) {
+		midA = A[x];
+	}
+	
+	printf ("Minimum: %d\n", minA);
+	printf ("Maximum: %d\n", maxA);
+	printf ("Median: %d", A[x]);
+	return 0;
+}
