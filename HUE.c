@@ -2,7 +2,7 @@
 
 int A[5];
 int B[5];
-int minA, minA_;
+int minA, minB;
 int maxA;
 int minB;
 float midA;
@@ -18,12 +18,16 @@ int main() {
 	scanf ("%d", &A[3]);
 	printf ("5 Wert: ");
 	scanf ("%d", &A[4]);
+	
+	//****Evaluation of minimum
 	minA = A[0]; 
 	for (int c=1; c<5; c++) {
 		if ( minA > A[c]){ 
 			minA = A[c];
 		}		
 	}
+	
+	//****Evaluation of maximum
 	maxA = A[0];
 	for (int c=1; c<5; c++) {
 		if ( maxA < A[c] ){
@@ -31,29 +35,25 @@ int main() {
 		}
 	}
 	
+	//****Evaluation of median
 	B[0] = minA;
-	minB = maxA;
-	for (int c=1; c<5; c++) {
-		for (int c=1; c<5; c++) {
-			if (A[c] >= minA_ && minA_ < A[c]){ 
-				minA_ = A[c];
-			}		
+	minB = 
+	for(int c = 1; c < 5; c++) {
+		for (int c = 1; c < 5; c++) {
+			if ( minB > A[c]){ 
+				minB = A[c];
+			}
 		}
-		if( A[c] >= B[c-1]) {
-			for (int c2=0; c2<5; c2++) {
-				if ( B[(c - 1)] <= A[c2] && minB > A[c2]){ 
-					B[c] = A[c2];
-				}		
-			} 
-		}
+		B[c] = A[];
 	}
+	
 	printf("B: %d, %d , %d, %d, %d",
 	B[0],
 	B[1],
 	B[2],
 	B[3],
 	B[4]);
-	int x = sizeof(B) / 2;
+	int x = (sizeof(B) / sizeof(B[0])) / 2;
 	int size = sizeof(B) / sizeof(B[0]);
 	printf("Size: %d\n", size);
 	if (sizeof(B) %2) {
@@ -62,6 +62,6 @@ int main() {
 	
 	printf ("Minimum: %d\n", minA);
 	printf ("Maximum: %d\n", maxA);
-	printf ("Median: %d", B[3]);
+	printf ("Median: %d", B[x]);
 	return 0;
 }
