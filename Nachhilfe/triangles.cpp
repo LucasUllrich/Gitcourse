@@ -1,4 +1,4 @@
-// Dreiecksklasse mll 2017-10-03 für 3AM
+// Dreiecksklasse mll 2017-10-03 fï¿½r 3AM
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -23,7 +23,7 @@ class Triangle {
     void Ausgabe() {
 		printf("Dreieck %s a=%f b=%f c=%f area=%f\n", name, a, b, c, area());
     }
-	
+
 	int istDreieck();
 };
 
@@ -37,7 +37,7 @@ int Triangle::istDreieck() {
 		a+b < c || a+c < b || b+c < a) {
 		return 0;
 	}
-	
+
 	if (a+b == c || a+c == b || b+c == a) {
 		return 2;
 	}
@@ -81,7 +81,7 @@ Triangle::Triangle(char *name, float a) {
 float Triangle::area() {
 	if (istDreieck()) {
 		float s = (a+b+c)/2;
-	
+
 		return aqrt(s * (s-a) * (s-b) * (s-c));
 	}
 	return 0;
@@ -93,7 +93,7 @@ class Triangles {
   Triangle *t[MAXTRIANGLES];
   Triangles();
   ~Triangles();
-  
+
   void ausgabe();
   void clear();
   void add();
@@ -109,7 +109,7 @@ Triangles::Triangles() {
   cnt = 0;
   in=fopen("triangles.dat","r");
   if(in) {
-    printf("Im Konstruktor Triangels, Datei geöffnet!\n");
+    printf("Im Konstruktor Triangels, Datei geï¿½ffnet!\n");
     while(fgets(line,sizeof line,in)) {
 	printf("Zeile gelesen: %s\n",line);
 	n=sscanf(line,"%s %f %f %f",name,&a,&b,&c);
@@ -135,7 +135,7 @@ Triangles::~Triangles() {
   // Fehlerbehandlung ???
   for(int i=0;i<cnt;i++) {
     t[i]->write(out);
-	delete t[i];       // Speicher freigeben
+	   delete t[i];       // Speicher freigeben
   }
   fclose(out);
 }
@@ -150,7 +150,7 @@ void Triangles::eingabe() {
 		scanf("%f", &b);
 		printf("Seite c ");
 		scanf("%f", &c);
-		
+
 		if (istDreieck() == 1) {
 			Ausgabe();
 		}
@@ -184,22 +184,22 @@ void Triangles::update() {
 	while (scanf("%d", &n) != 1) {
 		fflush(stdin);
 	}
-	
+
 	if ( n == 0) {
 		return;
 	}
-	
+
 	if (n <= 0 || n > cnt) {
 		printf("ERROR: Ungueltige Dreiecks-Numme");
 		return;
 	}
-	
+
 	t[n-1]->eingabe();
 }
 
 int main() {
   int run=1, auswahl;
-  
+
   Triangles d;
 
   if(d.cnt) {
@@ -211,7 +211,7 @@ int main() {
   else {
     printf("Es wurden keine Dreiecke geladen!\n");
   }
- 
+
   while(run) {
     printf("Alle loeschen      .... 1\n"
 		   "Dreieck hinzufuegen ... 2\n"
@@ -228,5 +228,5 @@ int main() {
          default:
 			printf("Kannst du nicht 0, 1 oder 2 eingeben???\n");
     }
-  } 
+  }
 }

@@ -1,15 +1,15 @@
 /*TrianglesArray:
 	*) dynamisches Array
-	*) Elemente einfügen: add
+	*) Elemente einfï¿½gen: add
 	*) Ein Element auslesen: get(por)
-	*) Ein Element ändern: set(t, por)
-	   das alte Element soll zurückgegeben werden
-	*) Ein Element löschen: del(pos)
-	   das gelöschte Element soll zurückgegeben werden
-	*) Ein Element einfügen add(t, pos)
+	*) Ein Element ï¿½ndern: set(t, por)
+	   das alte Element soll zurï¿½ckgegeben werden
+	*) Ein Element lï¿½schen: del(pos)
+	   das gelï¿½schte Element soll zurï¿½ckgegeben werden
+	*) Ein Element einfï¿½gen add(t, pos)
 	*) Die Anzahl der Elemente ermitteln: size()
 
-	
+
 TrianlesArray ta;
 Triangle *t, *t;
 
@@ -25,13 +25,13 @@ t2 = ta.set(new Triangle("hugo", 3,4,5));*/
 class TriangleArray{
 	char name[100];
 	float a, b, c;
-	
+
 	public:
 	void einlesen();
 };
 
 void TriangleArray::einlesen() {
-	
+
 	printf("Name: ");
 	scanf("%s", name);
 	printf("Triangle a: ");
@@ -57,7 +57,7 @@ class Triangles {
 
 
 void Triangles::einlesen() {
-	
+
 	printf("Name: ");
 	scanf("%s", name);
 	printf("Triangle a: ");
@@ -67,29 +67,29 @@ void Triangles::einlesen() {
 	printf("Triangle c: ");
 	scanf("%f", &c);
 }
-	
-	
+
+
 void Triangles::neu() {
-	triangle[d.cnt] = new TriangleArray;
-	triangle[d.cnt]->einlesen();
-	d.cnt++;
+	triangle[cnt] = new TriangleArray;
+	triangle[cnt]->einlesen();
+	cnt++;
 }
 
 void Triangles::aendern() {
 	int x;
-	
+
 	printf("Was soll geandert werden: ");
 	scanf("%d", &x);
-	
+
 	triangle[x-1]->einlesen;
 }
 
 void Triangles::loeschen() {
 	int x;
-	
+
 	printf("Was soll geloesht werden. ");
 	scanf("%d", &x);
-	
+
 	delete triangle[x-1];
 }
 
@@ -103,17 +103,17 @@ void Triangles::auslesen() {
 int main() {
 	Triangles d;
 	int x;
-	
+
 	printf("einlesen.......0\n"
 		   "aendern........1\n"
 		   "loeschen.......2\n"
 		   "auslesen.......3\n");
 	scanf("%d", &x);
-	
+
 	switch(auswahl) {
 		case 0: 		d.neu;			break;
 		case 1:         d.aendern;      break;
-		case 2;			d.loeschen();	break;
+		case 2:			d.loeschen();	break;
 		case 3:			d.auslesen();	break;
         default:
 		printf("Kannst du nicht 0, 1, 2 oder 3 eingeben???\n");
